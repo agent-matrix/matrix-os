@@ -1,0 +1,15 @@
+name: observe-plan-approve-execute-verify
+version: 0.1.0
+stages:
+  - observe
+  - remember
+  - plan
+  - govern
+  - fund
+  - execute
+  - verify
+  - record
+  - learn
+safety:
+  hitl_default: true
+  require_evidence: true

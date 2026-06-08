@@ -1,0 +1,11 @@
+version: 0.1.0
+risk_levels:
+  low: {default_decision: allow}
+  medium: {default_decision: require_sandbox}
+  high: {default_decision: require_human_approval}
+  critical: {default_decision: deny}
+signals:
+  modifies_code: medium
+  touches_secrets: high
+  deploys_to_production: critical
+  self_modification: critical

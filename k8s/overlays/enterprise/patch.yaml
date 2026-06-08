@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: matrix-os-config
+  namespace: matrix-os
+data:
+  REQUIRE_AUDIT_EXPORT: "true"
+  REQUIRE_SSO: "true"

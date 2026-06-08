@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: matrix-os-config
+  namespace: matrix-os
+data:
+  ALLOW_PRODUCTION_DEPLOY: "false"

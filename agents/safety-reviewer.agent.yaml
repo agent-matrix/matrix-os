@@ -1,0 +1,13 @@
+apiVersion: matrix.io/v1
+kind: AgentCard
+metadata:
+  name: safety-reviewer
+spec:
+  role: policy and misuse review agent
+  version: 0.1.0
+  risk_profile: high
+  protocols: [rest, mcp]
+  requires_approval: true
+  capabilities:
+    - read.memory
+    - read.repo

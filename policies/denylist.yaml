@@ -1,0 +1,12 @@
+version: 0.1.0
+commands:
+  - rm -rf /
+  - mkfs
+  - dd if=
+  - shutdown
+patterns:
+  - private_key
+  - AWS_SECRET_ACCESS_KEY
+  - GITHUB_TOKEN
+network:
+  blocked_by_default: true

@@ -1,0 +1,14 @@
+apiVersion: matrix.io/v1
+kind: AgentCard
+metadata:
+  name: verifier
+spec:
+  role: evidence and correctness checking agent
+  version: 0.1.0
+  risk_profile: medium
+  protocols: [rest, mcp]
+  requires_approval: true
+  capabilities:
+    - verify.run_tests
+    - read.repo
+    - read.memory

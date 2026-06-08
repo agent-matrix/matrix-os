@@ -1,0 +1,13 @@
+name: repo-maintenance
+version: 0.1.0
+stages:
+  - scan_repository
+  - retrieve_project_memory
+  - create_maintenance_plan
+  - request_approval
+  - apply_patch_in_branch
+  - run_tests_in_matrixlab
+  - open_pull_request
+  - remember_outcome
+constraints:
+  execution_mode: pr_only

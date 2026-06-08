@@ -1,0 +1,14 @@
+name: release
+on:
+  push:
+    tags: ["v*.*.*"]
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: tar -czf matrix-os-${GITHUB_REF_NAME}.tar.gz .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: matrix-os-${{ github.ref_name }}
+          path: matrix-os-${{ github.ref_name }}.tar.gz

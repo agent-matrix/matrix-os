@@ -1,0 +1,14 @@
+name: self-improvement-gated
+version: 0.1.0
+stages:
+  - propose_improvement
+  - classify_risk
+  - run_in_sandbox
+  - run_regression_evals
+  - human_review
+  - open_pull_request
+  - staged_rollout
+  - rollback_if_needed
+constraints:
+  allow_direct_self_modification: false
+  require_pull_request: true

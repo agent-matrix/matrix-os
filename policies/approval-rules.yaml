@@ -1,0 +1,10 @@
+version: 0.1.0
+rules:
+  - match: {risk: low}
+    decision: allow
+  - match: {risk: medium}
+    decision: require_sandbox
+  - match: {risk: high}
+    decision: require_human_approval
+  - match: {risk: critical}
+    decision: deny

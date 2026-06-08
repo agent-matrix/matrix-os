@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PolicyGrant",
+  "type": "object",
+  "required": [
+    "grant_id",
+    "plan_id",
+    "decision"
+  ],
+  "properties": {
+    "grant_id": {
+      "type": "string"
+    },
+    "plan_id": {
+      "type": "string"
+    },
+    "decision": {
+      "enum": [
+        "allow",
+        "allow_with_limits",
+        "require_human_approval",
+        "require_sandbox",
+        "deny",
+        "emergency_stop"
+      ]
+    },
+    "allowed_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expires_at": {
+      "type": "string"
+    }
+  }
+}

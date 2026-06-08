@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MemoryEvent",
+  "type": "object",
+  "required": [
+    "event_id",
+    "type",
+    "scope",
+    "content",
+    "source",
+    "timestamp"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "semantic",
+        "episodic",
+        "procedural",
+        "profile",
+        "policy",
+        "evidence",
+        "self"
+      ]
+    },
+    "scope": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    }
+  }
+}

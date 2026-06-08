@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matrix-os-orchestrator
+  namespace: matrix-os
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: matrix-os-orchestrator}
+  template:
+    metadata:
+      labels: {app: matrix-os-orchestrator}
+    spec:
+      containers:
+        - name: orchestrator
+          image: python:3.11-slim
+          command: ["python", "-m", "http.server", "8080"]
+          ports:
+            - containerPort: 8080

@@ -1,0 +1,12 @@
+version: 0.1.0
+capabilities:
+  read.repo: {risk: low}
+  read.memory: {risk: low}
+  write.memory: {risk: medium}
+  fs.apply_patch: {risk: medium}
+  verify.run_tests: {risk: low}
+  sandbox.run_code: {risk: medium}
+  shell.run: {risk: medium}
+  deploy.production: {risk: critical}
+  secrets.read: {risk: critical}
+  policy.modify: {risk: critical}

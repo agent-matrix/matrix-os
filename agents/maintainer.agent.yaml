@@ -1,0 +1,15 @@
+apiVersion: matrix.io/v1
+kind: AgentCard
+metadata:
+  name: maintainer
+spec:
+  role: repository maintenance agent
+  version: 0.1.0
+  risk_profile: high
+  protocols: [rest, mcp]
+  requires_approval: true
+  capabilities:
+    - read.repo
+    - fs.apply_patch
+    - verify.run_tests
+    - sandbox.run_code

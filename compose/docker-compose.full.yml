@@ -1,0 +1,23 @@
+name: matrix-os-full
+include:
+  - docker-compose.dev.yml
+services:
+  matrix-treasury:
+    image: python:3.11-slim
+    command: ["bash", "-lc", "python -m http.server 8100"]
+    ports: ["8100:8100"]
+  matrix-runtime:
+    image: python:3.11-slim
+    command: ["bash", "-lc", "python -m http.server 8080"]
+    ports: ["8080:8080"]
+  matrix-maintainer:
+    image: python:3.11-slim
+    command: ["bash", "-lc", "python -m http.server 8110"]
+    ports: ["8110:8110"]
+    environment:
+      EXECUTION_MODE: pr_only
+      REQUIRE_GUARDIAN: "true"
+  matrix-hub-admin:
+    image: node:20-slim
+    command: ["bash", "-lc", "node -e 'require("http").createServer((req,res)=>res.end("Matrix Hub Admin placeholder")).listen(3000)'"]
+    ports: ["3000:3000"]

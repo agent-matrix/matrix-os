@@ -1,0 +1,10 @@
+{
+  "id": "mcp_server:hello@0.1.0",
+  "name": "hello",
+  "version": "0.1.0",
+  "transport": "stdio",
+  "summary": "Example safe MCP server",
+  "capabilities": [
+    "hello"
+  ]
+}

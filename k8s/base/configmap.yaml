@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: matrix-os-config
+  namespace: matrix-os
+data:
+  MATRIX_SAFE_MODE: "true"
+  HITL_DEFAULT: "true"
+  AUTOPILOT_ENABLED: "false"

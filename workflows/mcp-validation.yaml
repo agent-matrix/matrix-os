@@ -1,0 +1,10 @@
+name: mcp-validation
+version: 0.1.0
+stages:
+  - ingest_manifest
+  - validate_schema
+  - run_validator
+  - run_sandbox_handshake
+  - list_tools
+  - safe_test_call
+  - publish_or_reject

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BudgetGrant",
+  "type": "object",
+  "required": [
+    "grant_id",
+    "plan_id",
+    "max_mxu",
+    "hard_stop"
+  ],
+  "properties": {
+    "grant_id": {
+      "type": "string"
+    },
+    "plan_id": {
+      "type": "string"
+    },
+    "max_mxu": {
+      "type": "number"
+    },
+    "max_tokens": {
+      "type": "integer"
+    },
+    "max_runtime_seconds": {
+      "type": "integer"
+    },
+    "hard_stop": {
+      "type": "boolean"
+    }
+  }
+}
