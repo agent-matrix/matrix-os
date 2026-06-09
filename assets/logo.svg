@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" width="560" height="140" role="img" aria-label="Matrix OS — Governed-Autonomy OS">
+  <defs>
+    <!-- Corporate dark background -->
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0f0d"/>
+      <stop offset="100%" stop-color="#050807"/>
+    </linearGradient>
+
+    <!-- Vibrant corporate green -->
+    <linearGradient id="brandGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00ff8c"/>
+      <stop offset="100%" stop-color="#00e575"/>
+    </linearGradient>
+
+    <!-- Subtle glow effect for the center node -->
+    <filter id="coreGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="url(#bgGradient)"/>
+
+  <!-- LOGO MARK -->
+  <g transform="translate(20, 10)">
+    <!-- Symmetric Plus-Configuration Network -->
+    <g transform="translate(60, 60)">
+
+      <!-- Connecting Orthogonal Lines -->
+      <g stroke="url(#brandGreen)" stroke-width="2.5" stroke-linecap="round" opacity="0.9">
+        <line x1="0" y1="-16" x2="0" y2="-36" />
+        <line x1="16" y1="0" x2="36" y2="0" />
+        <line x1="0" y1="16" x2="0" y2="36" />
+        <line x1="-16" y1="0" x2="-36" y2="0" />
+      </g>
+
+      <!-- Center Hub Structure -->
+      <circle cx="0" cy="0" r="16" fill="#050807" stroke="url(#brandGreen)" stroke-width="2.5"/>
+      <circle cx="0" cy="0" r="8" fill="url(#brandGreen)" stroke="#050807" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="3" fill="#ffffff" filter="url(#coreGlow)"/>
+
+      <!-- Outer Satellite Nodes -->
+      <g fill="#050807" stroke="url(#brandGreen)" stroke-width="2.5">
+        <circle cx="0" cy="-42" r="7.5" />
+        <circle cx="42" cy="0" r="7.5" />
+        <circle cx="0" cy="42" r="7.5" />
+        <circle cx="-42" cy="0" r="7.5" />
+      </g>
+    </g>
+  </g>
+
+  <!-- TYPOGRAPHY / WORDMARK -->
+  <g transform="translate(160, 0)" font-family="'Inter','Montserrat','Segoe UI',sans-serif">
+
+    <!-- Primary Brand Title -->
+    <text x="0" y="74" font-size="50" font-weight="500" letter-spacing="-1" fill="#ffffff">Matrix <tspan fill="url(#brandGreen)" font-weight="700">OS</tspan></text>
+
+    <!-- Subtitle / Tagline -->
+    <text x="2" y="104" font-size="12" font-weight="700" letter-spacing="4.5" fill="url(#brandGreen)" opacity="0.85">GOVERNED-AUTONOMY OS</text>
+  </g>
+</svg>

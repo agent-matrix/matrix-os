@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EvalReport",
+  "description": "Output of running an eval suite against the Matrix OS kernel.",
+  "type": "object",
+  "required": [
+    "report_id",
+    "suite",
+    "total",
+    "passed",
+    "cases"
+  ],
+  "properties": {
+    "report_id": {
+      "type": "string"
+    },
+    "suite": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "total": {
+      "type": "integer"
+    },
+    "passed": {
+      "type": "integer"
+    },
+    "failed": {
+      "type": "integer"
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "passed"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "class": {
+            "type": "string"
+          },
+          "goal": {
+            "type": "string"
+          },
+          "expected_decision": {
+            "type": "string"
+          },
+          "actual_decision": {
+            "type": "string"
+          },
+          "expected_status": {
+            "type": "string"
+          },
+          "actual_status": {
+            "type": "string"
+          },
+          "passed": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RepairResponse",
+  "description": "Returned by the AI coder (GitPilot) to the control plane (SelfRepair) after running its repair flow. In dry_run mode this carries a patch preview only: no PR, no push.",
+  "type": "object",
+  "required": [
+    "task_id",
+    "status",
+    "mode"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "blocked",
+        "needs_approval",
+        "error"
+      ]
+    },
+    "mode": {
+      "enum": [
+        "dry_run",
+        "draft_pr",
+        "apply"
+      ]
+    },
+    "patch_preview": {
+      "type": "string",
+      "description": "Unified diff."
+    },
+    "changed_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "change_type": {
+            "enum": [
+              "added",
+              "modified",
+              "deleted",
+              "renamed"
+            ]
+          }
+        }
+      }
+    },
+    "review": {
+      "type": "string"
+    },
+    "risk_level": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "sandbox_result": {
+      "type": "object",
+      "properties": {
+        "run_id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "exit_code": {
+          "type": "integer"
+        }
+      }
+    },
+    "pr_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

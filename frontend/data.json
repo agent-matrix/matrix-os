@@ -1,0 +1,108 @@
+{
+  "generated_at": "2026-06-08T11:13:27Z",
+  "metrics": [
+    {
+      "label": "Total Runs",
+      "value": "6",
+      "delta": "observed in run log",
+      "ic": "db",
+      "tone": "blue"
+    },
+    {
+      "label": "Execution Success",
+      "value": "66.7%",
+      "delta": "passed or partial",
+      "ic": "play",
+      "tone": "cyan"
+    },
+    {
+      "label": "Approval Required",
+      "value": "0.0%",
+      "delta": "held at the gate",
+      "ic": "brain",
+      "tone": "violet"
+    },
+    {
+      "label": "Governance Health",
+      "value": "66.7%",
+      "delta": "2 denied \u00b7 0 incidents",
+      "ic": "shield",
+      "tone": "green"
+    }
+  ],
+  "workflows": [
+    [
+      "read secrets from the vault",
+      "Cancelled",
+      "11:13",
+      "red"
+    ],
+    [
+      "review and analyze the catalog",
+      "Passed",
+      "11:13",
+      "green"
+    ],
+    [
+      "deploy to production",
+      "Cancelled",
+      "11:13",
+      "red"
+    ],
+    [
+      "remember the maintenance note",
+      "Passed",
+      "11:13",
+      "green"
+    ],
+    [
+      "apply a code patch to fix the failing test and",
+      "Passed",
+      "11:13",
+      "green"
+    ]
+  ],
+  "events": [
+    [
+      "read secrets from the vault \u2192 deny/cancelled",
+      "11:13"
+    ],
+    [
+      "review and analyze the catalog \u2192 allow/passed",
+      "11:13"
+    ],
+    [
+      "deploy to production \u2192 deny/cancelled",
+      "11:13"
+    ],
+    [
+      "remember the maintenance note \u2192 require_sandbox/passed",
+      "11:13"
+    ]
+  ],
+  "system": [
+    [
+      "Total Runs",
+      "6"
+    ],
+    [
+      "Policy Denials",
+      "2"
+    ],
+    [
+      "Contracts Enforced",
+      "9"
+    ],
+    [
+      "Open Incidents",
+      "0"
+    ]
+  ],
+  "coder_task": {
+    "title": "Fix failing dependency update in matrix-runtime",
+    "repo": "agent-matrix/matrix-runtime \u00b7 branch ai/fix-runtime-healthcheck",
+    "coder": "GitPilot (default)",
+    "risk": "Medium",
+    "mode": "dry_run"
+  }
+}
