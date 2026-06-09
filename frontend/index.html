@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Matrix OS — Admin Command Center</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="matrixos.css" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="os-glow"></div>
+  <canvas id="os-rain"></canvas>
+  <div class="os-grid"></div>
+  <div id="os-root"></div>
+
+  <script type="text/babel" src="matrixos-icons.jsx"></script>
+  <script type="text/babel" src="matrixos-app.jsx"></script>
+  <script>
+    // Cinematic phosphor digital rain (canvas) — disabled when motion is off.
+    (function(){
+      var c=document.getElementById('os-rain'),x=c.getContext('2d'),W,H,cols,drops;
+      var g="ﾊﾐﾋｰｳｼﾅﾓﾆ01<>=*+".split("");
+      function rs(){W=c.width=innerWidth;H=c.height=innerHeight;cols=Math.floor(W/16);drops=Array(cols).fill(0).map(function(){return Math.random()*-50;});}
+      rs();addEventListener('resize',rs);
+      var FR=0;
+      function frame(){
+        requestAnimationFrame(frame);
+        if(document.documentElement.classList.contains('mos-no-anim'))return;
+        FR++; if(FR%6!==0)return;
+        x.fillStyle='rgba(2,4,3,0.10)';x.fillRect(0,0,W,H);x.fillStyle='#00ff88';x.font='14px monospace';
+        for(var i=0;i<cols;i++){var t=g[Math.floor(Math.random()*g.length)];x.fillText(t,i*16,drops[i]*16);
+          if(drops[i]*16>H&&Math.random()>0.985)drops[i]=Math.random()*-20;drops[i]+=0.35;}
+      }
+      frame();
+    })();
+  </script>
+</body>
+</html>

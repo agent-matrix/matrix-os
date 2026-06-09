@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RepairPlan",
+  "description": "Sent by the control plane (SelfRepair) to the AI coder (GitPilot) at POST {GITPILOT_URL}/repair. Code generation has exactly one path: the coder provider, which defaults to gitpilot.",
+  "type": "object",
+  "required": [
+    "task_id",
+    "repo_url",
+    "mode",
+    "allowed_paths",
+    "coder"
+  ],
+  "properties": {
+    "client_id": {
+      "type": "string",
+      "description": "Who requested the repair, e.g. agent-matrix or matrix-maintainer."
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "repo_url": {
+      "type": "string"
+    },
+    "branch": {
+      "type": "string",
+      "default": "main"
+    },
+    "mode": {
+      "enum": [
+        "dry_run",
+        "draft_pr",
+        "apply"
+      ],
+      "description": "dry_run (default) = preview only; draft_pr = open a draft PR; apply = write to the working branch (gated)."
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "critical"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "recommended_action": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "allowed_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Fail-closed: an empty list blocks the repair immediately."
+    },
+    "forbidden_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "coder": {
+      "type": "object",
+      "required": [
+        "provider"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "default": "gitpilot",
+          "description": "The coder provider. Defaults to gitpilot and is never bypassed."
+        },
+        "model": {
+          "type": "string",
+          "default": "code-coder",
+          "description": "OllaBridge model alias used for code generation."
+        }
+      }
+    },
+    "sandbox": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "type": "string",
+          "default": "matrixlab"
+        },
+        "profile": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
