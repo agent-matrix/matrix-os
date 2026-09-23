@@ -23,6 +23,7 @@ from .http import (
     HttpTreasury,
 )
 from .context import MatrixContextMemory
+from .verification import HttpMatrixLab
 
 __all__ = [
     "PlannerPort",
@@ -40,4 +41,5 @@ __all__ = [
     "HttpRuntime",
     "HttpHiveDriver",
     "MatrixContextMemory",
+    "HttpMatrixLab",
 ]
