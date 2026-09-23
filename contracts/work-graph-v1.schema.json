@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-matrix.dev/contracts/work-graph-v1.schema.json",
+  "title": "WorkGraphV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","graph_id","plan_id","goal","nodes","execution_policy"],
+  "properties": {
+    "schema_version": {"const":"1.0"},
+    "graph_id": {"type":"string","minLength":1},
+    "plan_id": {"type":"string","minLength":1},
+    "goal": {"type":"string"},
+    "nodes": {
+      "type":"array",
+      "minItems":1,
+      "items":{
+        "type":"object",
+        "additionalProperties":false,
+        "required":["node_id","kind","capability","objective","depends_on","proof","risk"],
+        "properties":{
+          "node_id":{"type":"string","minLength":1},
+          "kind":{"const":"capability"},
+          "capability":{"type":"string","minLength":1},
+          "objective":{"type":"string","minLength":1},
+          "depends_on":{"type":"array","items":{"type":"string"}},
+          "inputs":{"type":"array","items":{"type":"string"}},
+          "preconditions":{"type":"array","items":{"type":"string"}},
+          "expected_outputs":{"type":"array","items":{"type":"string"}},
+          "proof":{
+            "type":"object",
+            "required":["success_criteria","verifiers"],
+            "properties":{
+              "success_criteria":{"type":"array","minItems":1,"items":{"type":"string"}},
+              "verifiers":{"type":"array","minItems":1,"items":{"type":"string"}}
+            },
+            "additionalProperties":false
+          },
+          "rollback":{"type":["string","null"]},
+          "risk":{"enum":["low","medium","high","critical"]}
+        }
+      }
+    },
+    "execution_policy":{
+      "type":"object",
+      "required":["authority","requires_policy_grant","requires_budget_grant","verification_required"],
+      "properties":{
+        "authority":{"const":"matrix-os"},
+        "requires_policy_grant":{"const":true},
+        "requires_budget_grant":{"const":true},
+        "verification_required":{"const":true}
+      },
+      "additionalProperties":false
+    }
+  }
+}

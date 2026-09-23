@@ -28,6 +28,7 @@ CONTRACTS = {
     "run-envelope-v2": "run-envelope-v2.schema.json",
     "plan-ir-v2": "plan-ir-v2.schema.json",
     "evidence-bundle-v2": "evidence-bundle-v2.schema.json",
+    "work-graph-v1": "work-graph-v1.schema.json",
 }
 
 
