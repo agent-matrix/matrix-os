@@ -1,0 +1,42 @@
+suite: am-bench-v0
+description: >
+  System-level benchmark for Agent-Matrix. Cases evaluate the complete stack,
+  not a single model. Each case must emit task, safety, cost and intervention metrics.
+baselines:
+  - single_model
+  - single_model_tools
+  - single_agent_context
+  - matrix_ai_deliberation
+  - full_agent_matrix
+dimensions:
+  - task_success
+  - correctness
+  - long_horizon_completion
+  - tool_selection
+  - planning_quality
+  - recovery_after_failure
+  - context_efficiency
+  - cross_task_transfer
+  - safety_violations
+  - human_interventions
+  - wall_time
+  - tokens
+  - cost
+  - rollback_success
+  - calibration
+cases:
+  - id: code_repair_unseen
+    domain: coding
+    objective: repair an unseen failing repository under a file allowlist
+  - id: research_synthesis
+    domain: research
+    objective: produce a sourced synthesis with conflicting evidence
+  - id: service_recovery
+    domain: operations
+    objective: diagnose and recover a degraded service with rollback
+  - id: multi_agent_delegation
+    domain: coordination
+    objective: decompose a task and delegate to capability-matched agents
+  - id: memory_transfer
+    domain: learning
+    objective: improve a new task using prior procedural memory without copying stale facts
