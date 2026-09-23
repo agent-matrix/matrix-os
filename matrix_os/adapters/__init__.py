@@ -1,9 +1,7 @@
-"""Adapters connect the kernel to component implementations.
+"""Adapters connect Matrix OS to replaceable Agent-Matrix services.
 
-v0.1 ships only the *local* implementations (the modules in ``matrix_os``
-themselves). The protocols in :mod:`matrix_os.adapters.base` define the seam,
-and :mod:`matrix_os.adapters.http` sketches the HTTP clients that Batch 2 will
-fill in to talk to the live Matrix AI / Guardian / Treasury / MatrixLab services.
+The v0 local ports remain available for offline/tests. The v2 live clients are
+contract-bound and keep global orchestration inside Matrix OS.
 """
 
 from .base import (
@@ -15,8 +13,16 @@ from .base import (
     TreasuryPort,
     VerifierPort,
 )
-
 from .gitpilot import GitPilotCoder
+from .http import (
+    HttpArchitect,
+    HttpGuardian,
+    HttpHiveDriver,
+    HttpMatrixAI,
+    HttpRuntime,
+    HttpTreasury,
+)
+from .context import MatrixContextMemory
 
 __all__ = [
     "PlannerPort",
@@ -27,4 +33,11 @@ __all__ = [
     "MemoryPort",
     "CoderPort",
     "GitPilotCoder",
+    "HttpMatrixAI",
+    "HttpGuardian",
+    "HttpTreasury",
+    "HttpArchitect",
+    "HttpRuntime",
+    "HttpHiveDriver",
+    "MatrixContextMemory",
 ]

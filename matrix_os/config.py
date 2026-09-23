@@ -47,6 +47,7 @@ SERVICE_ENV_KEYS = {
     "treasury": "MATRIX_TREASURY_URL",
     "matrixlab": "MATRIXLAB_URL",
     "runtime": "MATRIX_RUNTIME_URL",
+    "hive": "MATRIX_HIVE_DRIVER_URL",
     "llm": "MATRIX_LLM_URL",
     # GitPilot is the default AI coder (integrated, not replaced).
     "gitpilot": "MATRIX_GITPILOT_URL",

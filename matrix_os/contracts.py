@@ -1,11 +1,9 @@
 """Contract loading and validation.
 
-Every object that crosses a component boundary (PlanIR, PolicyGrant, BudgetGrant,
-EvidenceBundle, MemoryEvent, AgentCard) is validated against the JSON Schemas in
-``contracts/``. This keeps each Matrix component free to evolve independently as
-long as it honours the shared contracts.
+Every object that crosses a component boundary is validated against a versioned
+JSON Schema. V1 remains available during migration; V2 freezes the global
+cognitive-kernel interfaces.
 """
-
 from __future__ import annotations
 
 import json
@@ -17,7 +15,6 @@ from jsonschema import Draft202012Validator
 
 from .util import repo_root
 
-# Logical contract name -> schema filename.
 CONTRACTS = {
     "plan-ir": "plan-ir.schema.json",
     "policy-grant": "policy-grant.schema.json",
@@ -25,11 +22,13 @@ CONTRACTS = {
     "evidence-bundle": "evidence-bundle.schema.json",
     "memory-event": "memory-event.schema.json",
     "agent-card": "agent-card.schema.json",
-    # AI-coder boundary (SelfRepair <-> GitPilot). See docs/ai-coder-workflow.md.
     "repair-plan": "repair-plan.schema.json",
     "repair-response": "repair-response.schema.json",
-    # Evaluation harness output.
     "eval-report": "eval-report.schema.json",
+    "run-envelope-v2": "run-envelope-v2.schema.json",
+    "plan-ir-v2": "plan-ir-v2.schema.json",
+    "evidence-bundle-v2": "evidence-bundle-v2.schema.json",
+    "work-graph-v1": "work-graph-v1.schema.json",
 }
 
 
@@ -51,7 +50,6 @@ def _validator(name: str) -> Draft202012Validator:
 
 
 def validate(name: str, obj: Dict) -> Dict:
-    """Validate ``obj`` against contract ``name``. Returns the object on success."""
     errors = sorted(_validator(name).iter_errors(obj), key=lambda e: e.path)
     if errors:
         details = "; ".join(
@@ -63,7 +61,6 @@ def validate(name: str, obj: Dict) -> Dict:
 
 
 def load_all_schemas() -> Dict[str, dict]:
-    """Load and self-check every contract schema. Used by ``matrix-os validate``."""
     out: Dict[str, dict] = {}
     for name, fname in CONTRACTS.items():
         schema = json.loads((contracts_dir() / fname).read_text())
